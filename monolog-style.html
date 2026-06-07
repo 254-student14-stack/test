@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDIO — Brand & Web Experience</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:        #0a0a0a;
+      --bg-2:      #111111;
+      --fg:        #f0ede8;
+      --fg-muted:  #7a7570;
+      --accent:    #c8b89a;
+      --accent-2:  #e8ddd0;
+      --border:    rgba(240,237,232,0.08);
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.1vw, 16px);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ============================================================
+       NOISE OVERLAY
+    ============================================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 128px 128px;
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR
+    ============================================================ */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      background: var(--fg);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s var(--ease-out), width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.3s;
+      mix-blend-mode: difference;
+    }
+
+    #cursor-follower {
+      position: fixed;
+      top: 0; left: 0;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(240,237,232,0.35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s var(--ease-out), width 0.4s var(--ease-out), height 0.4s var(--ease-out), opacity 0.3s;
+      mix-blend-mode: difference;
+    }
+
+    body.cursor-hover #cursor { width: 60px; height: 60px; background: var(--accent); }
+    body.cursor-hover #cursor-follower { opacity: 0; }
+
+    /* ============================================================
+       LOADER
+    ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    #loader-logo {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      overflow: hidden;
+    }
+
+    #loader-logo span { display: inline-block; transform: translateY(110%); }
+
+    #loader-bar-wrap {
+      width: clamp(120px, 20vw, 200px);
+      height: 1px;
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    #loader-bar {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+    }
+
+    #loader-count {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--fg-muted);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      mix-blend-mode: difference;
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--fg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0%; height: 1px;
+      background: var(--fg);
+      transition: width 0.4s var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--fg); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(1.5rem, 4vw, 4rem);
+      padding-bottom: clamp(3rem, 6vw, 6rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3.5rem, 10vw, 11rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      margin-bottom: 3rem;
+      overflow: hidden;
+    }
+
+    .hero-title .line { overflow: hidden; display: block; }
+    .hero-title .word { display: inline-block; transform: translateY(110%); }
+
+    .hero-italic {
+      font-family: var(--font-head);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-desc {
+      max-width: 340px;
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-scroll {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+    }
+
+    .scroll-line {
+      width: 60px;
+      height: 1px;
+      background: var(--fg-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--fg);
+      animation: scrollLine 2s var(--ease-out) infinite 1.5s;
+    }
+
+    @keyframes scrollLine {
+      0% { left: -100%; }
+      50% { left: 0%; }
+      100% { left: 100%; }
+    }
+
+    .scroll-text {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    /* ============================================================
+       MARQUEE
+    ============================================================ */
+    .marquee-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 0 3rem;
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+    .marquee-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       SECTION COMMON
+    ============================================================ */
+    section { padding: clamp(5rem, 10vw, 10rem) clamp(1.5rem, 4vw, 4rem); }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px; height: 1px;
+      background: var(--fg-muted);
+    }
+
+    .reveal-text {
+      overflow: hidden;
+    }
+
+    .reveal-text .word {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 8rem);
+      align-items: start;
+    }
+
+    .about-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+
+    .about-right { padding-top: clamp(1rem, 4vw, 5rem); }
+
+    .about-desc {
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--fg-muted);
+      margin-bottom: 3rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--fg);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================================
+       WORK / PROJECTS
+    ============================================================ */
+    .work-section { padding-inline: 0; }
+
+    .work-header {
+      padding: 0 clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+
+    .work-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .projects-list { border-top: 1px solid var(--border); }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 3rem;
+      padding: 2rem clamp(1.5rem, 4vw, 4rem);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--bg-2);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.5s var(--ease-out);
+      z-index: 0;
+    }
+
+    .project-item:hover::before { transform: scaleY(1); }
+
+    .project-item > * { position: relative; z-index: 1; }
+
+    .project-num {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      letter-spacing: 0.1em;
+      min-width: 2.5rem;
+    }
+
+    .project-name {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      transition: letter-spacing 0.4s var(--ease-out);
+    }
+
+    .project-item:hover .project-name { letter-spacing: 0.01em; }
+
+    .project-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      border: 1px solid var(--border);
+      padding: 0.4em 1em;
+      border-radius: 100px;
+      transition: border-color 0.3s, color 0.3s;
+      display: none;
+    }
+
+    @media (min-width: 768px) { .project-tag { display: block; } }
+
+    .project-item:hover .project-tag {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-arrow {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s var(--ease-out), border-color 0.3s, background 0.3s;
+    }
+
+    .project-arrow svg {
+      width: 16px; height: 16px;
+      stroke: var(--fg);
+      transition: stroke 0.3s;
+    }
+
+    .project-item:hover .project-arrow {
+      transform: translate(4px, -4px) rotate(45deg);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* PROJECT HOVER IMAGE */
+    .project-hover-img {
+      position: fixed;
+      pointer-events: none;
+      z-index: 200;
+      width: clamp(200px, 22vw, 340px);
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      opacity: 0;
+      border-radius: 4px;
+    }
+
+    .project-hover-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: var(--bg);
+      padding: clamp(2rem, 3vw, 3rem);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 100%, rgba(200,184,154,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .service-card:hover { background: var(--bg-2); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--fg-muted);
+      margin-bottom: 3rem;
+    }
+
+    .service-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    .process-steps { margin-top: 5rem; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .step-num {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--border);
+      min-width: 80px;
+      transition: color 0.4s;
+    }
+
+    .process-step:hover .step-num { color: var(--accent); }
+
+    .step-content {}
+
+    .step-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.8;
+      max-width: 480px;
+    }
+
+    /* ============================================================
+       TESTIMONIAL
+    ============================================================ */
+    .testimonial-section {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 3rem;
+      color: var(--fg);
+    }
+
+    .testimonial-quote em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .author-info {}
+    .author-name { font-weight: 500; font-size: 0.9rem; }
+    .author-role { font-size: 0.75rem; color: var(--fg-muted); }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta-section {
+      text-align: center;
+      padding-block: clamp(6rem, 12vw, 14rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-head);
+      font-size: clamp(6rem, 20vw, 22rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border);
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .cta-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .cta-heading {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 8vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    /* MAGNETIC BUTTON */
+    .mag-btn-wrap {
+      display: inline-block;
+      position: relative;
+    }
+
+    .mag-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2em 2.5em;
+      border: 1px solid var(--fg);
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: var(--fg);
+      background: transparent;
+      cursor: none;
+      transition: background 0.4s var(--ease-out), color 0.4s, border-color 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mag-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--fg);
+      border-radius: 100px;
+      transform: scale(0);
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    .mag-btn:hover::before { transform: scale(1.1); }
+    .mag-btn:hover { color: var(--bg); }
+
+    .mag-btn span { position: relative; z-index: 1; }
+
+    .mag-btn-arrow {
+      position: relative; z-index: 1;
+      width: 18px; height: 18px;
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .mag-btn:hover .mag-btn-arrow { transform: translate(4px, -4px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: clamp(1.5rem, 3vw, 4rem);
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--fg); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+    }
+
+    .footer-email {
+      font-family: var(--font-head);
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      font-weight: 600;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+
+    .footer-email::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 100%; height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .footer-email:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    /* ============================================================
+       HORIZONTAL SCROLL (Featured Work)
+    ============================================================ */
+    .h-scroll-section {
+      position: relative;
+      padding-block: 0;
+    }
+
+    .h-scroll-heading {
+      padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem) 0;
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 3rem;
+    }
+
+    .h-scroll-container {
+      overflow: hidden;
+    }
+
+    .h-scroll-track {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0 clamp(1.5rem, 4vw, 4rem);
+      padding-bottom: clamp(4rem, 8vw, 8rem);
+      width: max-content;
+    }
+
+    .h-card {
+      flex-shrink: 0;
+      width: clamp(260px, 30vw, 420px);
+    }
+
+    .h-card-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .h-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);
+    }
+
+    .h-card-img-inner {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--border);
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .h-card:hover .h-card-img-inner { transform: scale(1.04); }
+
+    .h-card-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .h-card-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      #cursor, #cursor-follower { display: none; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .project-item { grid-template-columns: auto 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================
+       CURSOR
+  ================================================ -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- ================================================
+       LOADER
+  ================================================ -->
+  <div id="loader">
+    <div id="loader-logo">
+      <span>STUDIO</span>
+    </div>
+    <div id="loader-bar-wrap">
+      <div id="loader-bar"></div>
+    </div>
+    <div id="loader-count">0%</div>
+  </div>
+
+  <!-- ================================================
+       HOVER IMAGE (Projects)
+  ================================================ -->
+  <div class="project-hover-img" id="hoverImg">
+    <img src="" alt="" id="hoverImgSrc" />
+  </div>
+
+  <!-- ================================================
+       NAV
+  ================================================ -->
+  <nav>
+    <a href="#" class="nav-logo">STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="#work">עבודות</a></li>
+      <li><a href="#services">שירותים</a></li>
+      <li><a href="#process">תהליך</a></li>
+      <li><a href="#about">אודות</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">צור קשר →</a>
+  </nav>
+
+  <!-- ================================================
+       HERO
+  ================================================ -->
+  <section class="hero">
+    <p class="hero-eyebrow">סטודיו לעיצוב מותג וחוויית אתר</p>
+    <h1 class="hero-title">
+      <span class="line"><span class="word">אנחנו</span></span>
+      <span class="line"><span class="word">בונים</span> <span class="word hero-italic">חוויות</span></span>
+      <span class="line"><span class="word">דיגיטליות.</span></span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        סטודיו לעיצוב מותגים ואתרים לחברות B2B. אנחנו לוקחים פחות פרויקטים כדי לתת לכל אחד את מלוא הקשב.
+      </p>
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span class="scroll-text">גלול למטה</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       MARQUEE
+  ================================================ -->
+  <div class="marquee-section">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item">
+        <span>עיצוב מותג</span><div class="marquee-dot"></div>
+        <span>חוויית משתמש</span><div class="marquee-dot"></div>
+        <span>פיתוח אתרים</span><div class="marquee-dot"></div>
+        <span>אסטרטגיה דיגיטלית</span><div class="marquee-dot"></div>
+        <span>זהות ויזואלית</span><div class="marquee-dot"></div>
+        <span>עיצוב מותג</span><div class="marquee-dot"></div>
+        <span>חוויית משתמש</span><div class="marquee-dot"></div>
+        <span>פיתוח אתרים</span><div class="marquee-dot"></div>
+        <span>אסטרטגיה דיגיטלית</span><div class="marquee-dot"></div>
+        <span>זהות ויזואלית</span><div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item" aria-hidden="true">
+        <span>עיצוב מותג</span><div class="marquee-dot"></div>
+        <span>חוויית משתמש</span><div class="marquee-dot"></div>
+        <span>פיתוח אתרים</span><div class="marquee-dot"></div>
+        <span>אסטרטגיה דיגיטלית</span><div class="marquee-dot"></div>
+        <span>זהות ויזואלית</span><div class="marquee-dot"></div>
+        <span>עיצוב מותג</span><div class="marquee-dot"></div>
+        <span>חוויית משתמש</span><div class="marquee-dot"></div>
+        <span>פיתוח אתרים</span><div class="marquee-dot"></div>
+        <span>אסטרטגיה דיגיטלית</span><div class="marquee-dot"></div>
+        <span>זהות ויזואלית</span><div class="marquee-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       ABOUT
+  ================================================ -->
+  <section id="about">
+    <div class="section-label">אודותינו</div>
+    <div class="about-grid">
+      <h2 class="about-heading reveal-text">
+        אנחנו לא סתם סטודיו. אנחנו שותפים ל<em class="hero-italic">הצלחה</em>.
+      </h2>
+      <div class="about-right">
+        <p class="about-desc reveal-text">
+          אנחנו מאמינים שמותג חזק הוא הנכס החשוב ביותר של עסק. לכן אנחנו מגיעים לכל פרויקט עם מחויבות מלאה, מחשבה אסטרטגית ויצירתיות שאין לה גבול.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-number" data-count="40">0</div>
+            <div class="stat-label">פרויקטים</div>
+          </div>
+          <div>
+            <div class="stat-number" data-count="98">0</div>
+            <div class="stat-label">% שביעות רצון</div>
+          </div>
+          <div>
+            <div class="stat-number" data-count="5">0</div>
+            <div class="stat-label">שנות ניסיון</div>
+          </div>
+          <div>
+            <div class="stat-number" data-count="12">0</div>
+            <div class="stat-label">פרסים</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       WORK (projects list)
+  ================================================ -->
+  <section id="work" class="work-section">
+    <div class="work-header">
+      <h2 class="work-heading reveal-text">עבודות נבחרות</h2>
+    </div>
+    <div class="projects-list">
+
+      <a class="project-item" href="#"
+         data-img="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80">
+        <span class="project-num">01</span>
+        <span class="project-name">Nexus Studio</span>
+        <span class="project-tag">עיצוב מותג</span>
+        <div class="project-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="project-item" href="#"
+         data-img="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&q=80">
+        <span class="project-num">02</span>
+        <span class="project-name">Aura Capital</span>
+        <span class="project-tag">אתר + מותג</span>
+        <div class="project-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="project-item" href="#"
+         data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80">
+        <span class="project-num">03</span>
+        <span class="project-name">Forma Architecture</span>
+        <span class="project-tag">חוויית משתמש</span>
+        <div class="project-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="project-item" href="#"
+         data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80">
+        <span class="project-num">04</span>
+        <span class="project-name">Velo Finance</span>
+        <span class="project-tag">זהות ויזואלית</span>
+        <div class="project-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ================================================
+       HORIZONTAL SCROLL CARDS
+  ================================================ -->
+  <div class="h-scroll-section">
+    <h2 class="h-scroll-heading reveal-text">עוד עבודות</h2>
+    <div class="h-scroll-container">
+      <div class="h-scroll-track" id="hScrollTrack">
+        <div class="h-card">
+          <div class="h-card-img"><div class="h-card-img-inner">A</div></div>
+          <div class="h-card-title">Atlas Branding</div>
+          <div class="h-card-tag">מותג — 2024</div>
+        </div>
+        <div class="h-card">
+          <div class="h-card-img"><div class="h-card-img-inner">B</div></div>
+          <div class="h-card-title">Bloom Health</div>
+          <div class="h-card-tag">אתר — 2024</div>
+        </div>
+        <div class="h-card">
+          <div class="h-card-img"><div class="h-card-img-inner">C</div></div>
+          <div class="h-card-title">Craft Agency</div>
+          <div class="h-card-tag">מותג + אתר — 2023</div>
+        </div>
+        <div class="h-card">
+          <div class="h-card-img"><div class="h-card-img-inner">D</div></div>
+          <div class="h-card-title">Delta Tech</div>
+          <div class="h-card-tag">חוויית משתמש — 2023</div>
+        </div>
+        <div class="h-card">
+          <div class="h-card-img"><div class="h-card-img-inner">E</div></div>
+          <div class="h-card-title">Echo Studio</div>
+          <div class="h-card-tag">זהות — 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       SERVICES
+  ================================================ -->
+  <section id="services">
+    <div class="section-label">מה אנחנו עושים</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">אסטרטגיית מותג</div>
+        <div class="service-desc">בנייה של זהות מותגית חזקה מהיסוד — מחקר, פוזיציונינג, וסיפור המותג שלך.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">עיצוב ויזואלי</div>
+        <div class="service-desc">לוגו, פלטת צבעים, טיפוגרפיה וכל מערכת הזהות החזותית של המותג שלך.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">עיצוב אתרים</div>
+        <div class="service-desc">אתרי Webflow ו-Framer מותאמים אישית עם אנימציות מתקדמות וחוויית משתמש חלקה.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">מערכות עיצוב</div>
+        <div class="service-desc">מערכת עיצוב שלמה וסקלבילית שתצמח עם העסק שלך לאורך שנים.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       PROCESS
+  ================================================ -->
+  <section id="process">
+    <div class="section-label">התהליך שלנו</div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title reveal-text">גילוי והבנה</div>
+          <div class="step-desc">מתחילים עם שיחה עמוקה על העסק, הקהל, והמטרות שלך. מחקר תחרותי ומיפוי הזדמנויות.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title reveal-text">אסטרטגיה ועיצוב</div>
+          <div class="step-desc">בניית הבסיס האסטרטגי ועיצוב הקונספט הויזואלי. שיתוף פעולה הדוק איתך בכל שלב.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title reveal-text">פיתוח ובנייה</div>
+          <div class="step-desc">הבאת העיצוב לחיים עם קוד נקי, אנימציות חלקות, ואתר שמדבר לקהל שלך.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title reveal-text">השקה ותמיכה</div>
+          <div class="step-desc">90 יום של תמיכה אחרי ההשקה — כי אנחנו לא עוזבים עד שהמותג שלך ממריא.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       TESTIMONIAL
+  ================================================ -->
+  <section>
+    <div class="testimonial-section">
+      <div class="section-label" style="justify-content:center">מה אומרים עלינו</div>
+      <blockquote class="testimonial-quote reveal-text">
+        "הם לא רק עיצבו לנו אתר — הם <em>שינו את הדרך</em> שהלקוחות שלנו תופסים אותנו."
+      </blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://i.pravatar.cc/88?img=12" alt="Avatar" />
+        </div>
+        <div class="author-info">
+          <div class="author-name">דנה כהן</div>
+          <div class="author-role">מנכ"לית, Nexus Studio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       CTA
+  ================================================ -->
+  <section id="contact" class="cta-section">
+    <div class="cta-bg-text" id="ctaBgText">LET'S TALK</div>
+    <p class="cta-label">מוכן להתחיל?</p>
+    <h2 class="cta-heading reveal-text">בואנו<br/>לעבוד.</h2>
+    <div class="mag-btn-wrap" id="magBtnWrap">
+      <a href="mailto:hello@studio.com" class="mag-btn">
+        <span>שלח הודעה</span>
+        <svg class="mag-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">STUDIO</div>
+      <nav class="footer-links">
+        <a href="#">עבודות</a>
+        <a href="#">שירותים</a>
+        <a href="#">תהליך</a>
+        <a href="#">אודות</a>
+        <a href="#">בלוג</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2024 Studio. כל הזכויות שמורות.</span>
+      <a href="mailto:hello@studio.com" class="footer-email">hello@studio.com</a>
+    </div>
+  </footer>
+
+  <!-- ================================================
+       JAVASCRIPT
+  ================================================ -->
+  <script>
+  (function() {
+
+    /* ── Smooth Scroll (Lenis) ───────────────────────── */
+    const lenis = new Lenis({ lerp: 0.075, smooth: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    /* ── Custom Cursor ───────────────────────────────── */
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursor-follower');
+    let mx = -100, my = -100, fx = -100, fy = -100;
+
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    gsap.ticker.add(() => {
+      fx += (mx - fx) * 0.12;
+      fy += (my - fy) * 0.12;
+      gsap.set(cursor, { x: mx, y: my });
+      gsap.set(follower, { x: fx, y: fy });
+    });
+
+    document.querySelectorAll('a, button, .mag-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    /* ── Magnetic Button ─────────────────────────────── */
+    document.querySelectorAll('.mag-btn-wrap').forEach(wrap => {
+      const btn = wrap.querySelector('.mag-btn');
+      const strength = 0.35;
+
+      wrap.addEventListener('mousemove', e => {
+        const rect = wrap.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) * strength;
+        const dy = (e.clientY - cy) * strength;
+        gsap.to(btn, { x: dx, y: dy, duration: 0.4, ease: 'power3.out' });
+      });
+
+      wrap.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+
+    /* ── Loader ──────────────────────────────────────── */
+    const loaderBar  = document.getElementById('loader-bar');
+    const loaderCount = document.getElementById('loader-count');
+    const loaderLogo  = document.querySelector('#loader-logo span');
+
+    const tl = gsap.timeline({
+      onComplete: enterSite
+    });
+
+    tl.to(loaderLogo, { y: '0%', duration: 0.8, ease: 'power4.out', delay: 0.2 })
+      .to(loaderBar, {
+        width: '100%',
+        duration: 1.6,
+        ease: 'power2.inOut',
+        onUpdate() {
+          const p = Math.round(this.progress() * 100);
+          loaderCount.textContent = p + '%';
+        }
+      }, '-=0.4')
+      .to('#loader', {
+        yPercent: -100,
+        duration: 0.9,
+        ease: 'power4.inOut',
+        delay: 0.15
+      });
+
+    function enterSite() {
+      document.getElementById('loader').style.display = 'none';
+      animateHero();
+    }
+
+    /* ── Hero Animation ──────────────────────────────── */
+    function animateHero() {
+      const words = document.querySelectorAll('.hero-title .word');
+      gsap.to(words, {
+        y: '0%',
+        duration: 1.1,
+        ease: 'power4.out',
+        stagger: 0.08
+      });
+      gsap.to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+      gsap.to('.hero-desc',    { opacity: 1, y: 0, duration: 0.8, delay: 0.5, ease: 'power3.out' });
+      gsap.to('.hero-scroll',  { opacity: 1, duration: 0.8, delay: 0.9, ease: 'power3.out' });
+    }
+
+    /* ── Text Reveal on Scroll ───────────────────────── */
+    function splitAndAnimate(selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        if (el.closest('.hero-title')) return;
+        const text = el.innerHTML;
+        const words = text.trim().split(/\s+/);
+        el.innerHTML = words.map(w =>
+          `<span class="word" style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;transform:translateY(110%)">${w}</span></span>`
+        ).join(' ');
+
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 82%',
+          onEnter: () => {
+            gsap.to(el.querySelectorAll('.word > span'), {
+              y: '0%',
+              duration: 0.9,
+              ease: 'power4.out',
+              stagger: 0.04
+            });
+          }
+        });
+      });
+    }
+
+    splitAndAnimate('.reveal-text');
+
+    /* ── Fade-up on Scroll ───────────────────────────── */
+    gsap.utils.toArray('.service-card, .process-step, .h-card').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: (i % 4) * 0.1,
+          scrollTrigger: { trigger: el, start: 'top 85%' }
+        }
+      );
+    });
+
+    /* ── Counter Animation ───────────────────────────── */
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = +el.dataset.count;
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 80%',
+        onEnter: () => {
+          gsap.to({ val: 0 }, {
+            val: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            onUpdate() { el.textContent = Math.round(this.targets()[0].val); }
+          });
+        }
+      });
+    });
+
+    /* ── Marquee ─────────────────────────────────────── */
+    const track = document.getElementById('marqueeTrack');
+    let xPos = 0;
+    let speed = 0.5;
+
+    function animateMarquee() {
+      xPos -= speed;
+      const trackWidth = track.children[0].offsetWidth;
+      if (Math.abs(xPos) >= trackWidth) xPos = 0;
+      gsap.set(track, { x: xPos });
+      requestAnimationFrame(animateMarquee);
+    }
+    animateMarquee();
+
+    /* ── Horizontal Scroll Cards ─────────────────────── */
+    const hTrack = document.getElementById('hScrollTrack');
+    if (hTrack) {
+      const totalWidth = hTrack.scrollWidth - hTrack.parentElement.offsetWidth;
+      gsap.to(hTrack, {
+        x: () => -totalWidth,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.h-scroll-section',
+          start: 'top top',
+          end: () => '+=' + totalWidth,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1
+        }
+      });
+    }
+
+    /* ── Project Hover Image ─────────────────────────── */
+    const hoverImgEl = document.getElementById('hoverImg');
+    const hoverImgSrc = document.getElementById('hoverImgSrc');
+
+    document.querySelectorAll('.project-item[data-img]').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        hoverImgSrc.src = item.dataset.img;
+        gsap.to(hoverImgEl, { opacity: 1, scale: 1, duration: 0.4, ease: 'power3.out' });
+      });
+      item.addEventListener('mouseleave', () => {
+        gsap.to(hoverImgEl, { opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.in' });
+      });
+      item.addEventListener('mousemove', e => {
+        gsap.to(hoverImgEl, {
+          x: e.clientX + 24,
+          y: e.clientY - hoverImgEl.offsetHeight / 2,
+          duration: 0.5,
+          ease: 'power3.out'
+        });
+      });
+    });
+
+    /* ── Parallax on CTA bg text ─────────────────────── */
+    const ctaBg = document.getElementById('ctaBgText');
+    if (ctaBg) {
+      gsap.to(ctaBg, {
+        yPercent: -15,
+        ease: 'none',
+        scrollTrigger: { trigger: '.cta-section', start: 'top bottom', end: 'bottom top', scrub: 1 }
+      });
+    }
+
+    /* ── Nav hide/show on scroll ─────────────────────── */
+    let lastScroll = 0;
+    lenis.on('scroll', ({ scroll }) => {
+      const nav = document.querySelector('nav');
+      if (scroll > lastScroll && scroll > 100) {
+        gsap.to(nav, { yPercent: -120, duration: 0.5, ease: 'power2.inOut' });
+      } else {
+        gsap.to(nav, { yPercent: 0, duration: 0.5, ease: 'power2.out' });
+      }
+      lastScroll = scroll;
+    });
+
+    /* ── Section label fade ──────────────────────────── */
+    gsap.utils.toArray('.section-label').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' } }
+      );
+    });
+
+  })();
+  </script>
+</body>
+</html>
