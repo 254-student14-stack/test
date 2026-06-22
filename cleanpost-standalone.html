@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanPost | קלינפוסט</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Rubik', sans-serif; color: #0f172a; background: #fff; }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      background: transparent; transition: background 0.3s, box-shadow 0.3s;
+      padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+    }
+    header.scrolled { background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+    .logo { font-size: 20px; font-weight: 700; color: #2563eb; }
+    nav { display: flex; gap: 32px; }
+    nav a { text-decoration: none; color: #374151; font-weight: 500; }
+    nav a:hover { color: #2563eb; }
+    .btn-join { background: #2563eb; color: #fff; padding: 10px 22px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; font-size: 15px; }
+    .btn-join:hover { background: #1d4ed8; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      display: flex; align-items: center; padding-top: 80px;
+    }
+    .hero-inner { max-width: 900px; margin: 0 auto; padding: 80px 24px; text-align: center; }
+    .hero h1 { font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero h1 span { color: #2563eb; }
+    .hero p { font-size: 20px; color: #4b5563; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-blue { background: #2563eb; color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 17px; border: none; cursor: pointer; }
+    .btn-blue:hover { background: #1d4ed8; }
+    .btn-green { background: #10b981; color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 17px; border: none; cursor: pointer; }
+    .btn-green:hover { background: #059669; }
+    .trust { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; color: #374151; font-weight: 600; }
+    .trust span::before { content: '✓ '; color: #10b981; }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    h2.title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; text-align: center; margin-bottom: 56px; }
+    .bg-gray { background: #f8fafc; }
+
+    /* CARDS GRID */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .card-icon { font-size: 48px; margin-bottom: 16px; }
+    .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .card p { color: #6b7280; line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media(max-width: 640px) { .how-grid { grid-template-columns: 1fr; } }
+    .how-box { border-radius: 20px; padding: 36px; }
+    .how-box.blue { background: #eff6ff; }
+    .how-box.green { background: #f0fdf4; }
+    .how-box h3 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .how-box.blue h3 { color: #1d4ed8; }
+    .how-box.green h3 { color: #059669; }
+    .step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num.blue { background: #2563eb; }
+    .step-num.green { background: #10b981; }
+    .step-text h4 { font-weight: 700; margin-bottom: 4px; }
+    .step-text p { color: #6b7280; font-size: 15px; }
+
+    /* TESTIMONIALS */
+    .testi-card { background: #eff6ff; border-radius: 16px; padding: 32px; }
+    .stars { color: #fbbf24; font-size: 22px; margin-bottom: 16px; }
+    .testi-text { font-size: 17px; color: #374151; line-height: 1.7; margin-bottom: 20px; }
+    .testi-name { font-weight: 700; }
+    .testi-role { color: #9ca3af; font-size: 14px; margin-top: 4px; }
+
+    /* CTA BANNER */
+    .cta-section { background: #2563eb; text-align: center; }
+    .cta-section h2 { color: #fff; }
+    .cta-section p { color: #bfdbfe; font-size: 20px; margin-bottom: 36px; margin-top: -36px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: #fff; color: #2563eb; padding: 16px 36px; border-radius: 12px; font-weight: 700; font-size: 17px; border: none; cursor: pointer; }
+
+    /* FAQ */
+    .faq-item { background: #fff; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); overflow: hidden; }
+    .faq-q { width: 100%; text-align: right; padding: 20px 24px; font-size: 17px; font-weight: 600; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-arrow { color: #2563eb; transition: transform 0.3s; font-size: 14px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-a { max-height: 200px; }
+    .faq-a p { padding: 0 24px 20px; color: #6b7280; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: #0f172a; color: #9ca3af; padding: 48px 24px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px; }
+    .footer-logo { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: #9ca3af; text-decoration: none; font-size: 14px; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { border-top: 1px solid #1e293b; padding-top: 20px; text-align: center; font-size: 14px; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: #fff; border-radius: 20px; padding: 36px; max-width: 440px; width: 100%; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .modal-header h3 { font-size: 22px; font-weight: 700; }
+    .modal-close { background: none; border: none; font-size: 28px; cursor: pointer; color: #9ca3af; line-height: 1; }
+    .tabs { display: flex; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+    .tab { flex: 1; padding: 12px; font-weight: 600; background: none; border: none; cursor: pointer; font-size: 15px; color: #6b7280; }
+    .tab.active-blue { background: #2563eb; color: #fff; }
+    .tab.active-green { background: #10b981; color: #fff; }
+    .form-field { width: 100%; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; font-size: 16px; font-family: inherit; margin-bottom: 12px; text-align: right; }
+    .form-field:focus { outline: none; border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(147,197,253,0.3); }
+    .submit-btn { width: 100%; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 17px; border: none; cursor: pointer; color: #fff; }
+    .submit-btn.blue { background: #2563eb; }
+    .submit-btn.green { background: #10b981; }
+    .success-msg { text-align: center; padding: 32px 0; }
+    .success-msg .big { font-size: 56px; margin-bottom: 12px; }
+    .success-msg h4 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .success-msg p { color: #6b7280; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media(max-width: 768px) {
+      header { padding: 14px 20px; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="logo">CleanPost | קלינפוסט</div>
+  <nav>
+    <a href="#how">איך זה עובד</a>
+    <a href="#features">יתרונות</a>
+    <a href="#testimonials">המלצות</a>
+    <a href="#faq">שאלות נפוצות</a>
+  </nav>
+  <button class="btn-join" onclick="openModal('builder')">הצטרף בחינם</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>הפלטפורמה שמחברת בין קבלנים<br><span>לחברות ניקיון לאחר שיפוץ</span></h1>
+    <p>מצא חברות ניקיון מקצועיות לפרויקט שלך, או קבל עבודות ניקיון רציפות כחברת ניקיון</p>
+    <div class="hero-btns">
+      <button class="btn-blue" onclick="openModal('builder')">אני קבלן — מחפש ניקיון</button>
+      <button class="btn-green" onclick="openModal('cleaner')">אני חברת ניקיון — רוצה עבודות</button>
+    </div>
+    <div class="trust">
+      <span>500+ קבלנים</span>
+      <span>200+ חברות ניקיון</span>
+      <span>98% שביעות רצון</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="bg-gray">
+  <div class="section-inner">
+    <h2 class="title reveal">הבעיה שכולם מכירים</h2>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon">🔨</div>
+        <h3>קבלנים</h3>
+        <p>מבזבזים שעות למצוא חברת ניקיון אמינה בלחץ גמר הפרויקט</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🧹</div>
+        <h3>חברות ניקיון</h3>
+        <p>מתקשות למצוא עבודות רציפות ולבנות בסיס לקוחות יציב</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">⏰</div>
+        <h3>זמן יקר</h3>
+        <p>תיאומים ידניים, ביטולי דקה אחרונה, חוסר שקיפות במחירים</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <h2 class="title reveal">איך זה עובד?</h2>
+    <div class="how-grid">
+      <div class="how-box blue reveal">
+        <h3>לקבלנים</h3>
+        <div class="step"><div class="step-num blue">1</div><div class="step-text"><h4>פרסם פרויקט</h4><p>תאר את הפרויקט, גודל השטח ומועד הסיום הרצוי</p></div></div>
+        <div class="step"><div class="step-num blue">2</div><div class="step-text"><h4>קבל הצעות</h4><p>חברות ניקיון מאומתות ישלחו הצעות מחיר תוך שעות</p></div></div>
+        <div class="step"><div class="step-num blue">3</div><div class="step-text"><h4>בחר וסיים</h4><p>בחר את ההצעה המתאימה, שלם בטוח וקבל ניקיון מקצועי</p></div></div>
+      </div>
+      <div class="how-box green reveal">
+        <h3>לחברות ניקיון</h3>
+        <div class="step"><div class="step-num green">1</div><div class="step-text"><h4>הירשם בחינם</h4><p>צור פרופיל חברה עם תיאור שירותים ואזורי פעילות</p></div></div>
+        <div class="step"><div class="step-num green">2</div><div class="step-text"><h4>קבל התראות</h4><p>קבל התראות על פרויקטים חדשים באזורך בזמן אמת</p></div></div>
+        <div class="step"><div class="step-num green">3</div><div class="step-text"><h4>עבוד ותרוויח</h4><p>השלם עבודות, קבל דירוגים ובנה מוניטין חזק</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="bg-gray">
+  <div class="section-inner">
+    <h2 class="title reveal">למה CleanPost?</h2>
+    <div class="grid-3">
+      <div class="card reveal"><div class="card-icon">✅</div><h3>מאומת ומדורג</h3><p>כל חברות הניקיון עוברות אימות ומקבלות דירוגים מקבלנים</p></div>
+      <div class="card reveal"><div class="card-icon">💰</div><h3>תמחור שקוף</h3><p>השוואת מחירים בקלות, ללא הפתעות</p></div>
+      <div class="card reveal"><div class="card-icon">⚡</div><h3>מהיר ויעיל</h3><p>מציאת ניקיון תוך שעות, לא ימים</p></div>
+      <div class="card reveal"><div class="card-icon">📱</div><h3>ממשק פשוט</h3><p>פלטפורמה קלה לשימוש גם בנייד</p></div>
+      <div class="card reveal"><div class="card-icon">🔒</div><h3>תשלום מאובטח</h3><p>תשלום דרך הפלטפורמה עם הגנה מלאה</p></div>
+      <div class="card reveal"><div class="card-icon">📊</div><h3>ניהול פרויקטים</h3><p>מעקב אחרי כל הניקיונות במקום אחד</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <h2 class="title reveal">מה אומרים עלינו</h2>
+    <div class="grid-3">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"CleanPost חסכה לי שעות של חיפוש. עכשיו אני מוצא ניקיון תוך דקות לכל פרויקט."</p>
+        <div class="testi-name">יוסי כהן</div>
+        <div class="testi-role">קבלן בניה</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"מאז שהצטרפנו לCleanPost, הכנסות החברה גדלו ב-40%. עבודות רציפות ולקוחות איכותיים."</p>
+        <div class="testi-name">מירה לוי</div>
+        <div class="testi-role">מנכ"לית חברת ניקיון</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"הפלטפורמה הכי טובה בשוק. שקיפות מחירים, חברות מאומתות, שירות מעולה."</p>
+        <div class="testi-name">דוד אברהם</div>
+        <div class="testi-role">קבלן שיפוצים</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner" style="text-align:center">
+    <h2 class="title reveal" style="color:#fff">מוכן להתחיל?</h2>
+    <p class="reveal">הצטרף לאלפי קבלנים וחברות ניקיון שכבר עובדים חכם יותר</p>
+    <div class="cta-btns reveal">
+      <button class="btn-white" onclick="openModal('builder')">אני קבלן</button>
+      <button class="btn-green" onclick="openModal('cleaner')">אני חברת ניקיון</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-gray">
+  <div class="section-inner" style="max-width:720px">
+    <h2 class="title reveal">שאלות נפוצות</h2>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">כמה עולה להשתמש בפלטפורמה? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>הצטרפות ופרסום פרויקטים בחינם לגמרי לקבלנים. חברות ניקיון משלמות עמלה קטנה רק על עבודות שהושלמו.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">איך מאמתים חברות ניקיון? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>כל חברה עוברת בדיקת רישיון עסק, ביטוח, ועבר פלילי. בנוסף, דירוגים אמיתיים מקבלנים.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">כמה זמן לוקח למצוא ניקיון? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>בממוצע 2–4 שעות. בפרויקטים דחופים ניתן לקבל מענה תוך שעה.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">האם יש ביטוח לנזקים? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>כן. כל חברות הניקיון מחויבות בביטוח צד ג׳. בנוסף יש לנו מנגנון הגנה לקבלנים.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">מה קורה אם לא מרוצה מהשירות? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>יש לנו מדיניות החזר כספי מלאה ב-48 שעות אם השירות לא עמד בסטנדרטים.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">באיזה אזורים הפלטפורמה פעילה? <span class="faq-arrow">▼</span></button>
+      <div class="faq-a"><p>כרגע פעילים במרכז הארץ, גוש דן ושרון. מתרחבים לכל הארץ ב-2024.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">CleanPost | קלינפוסט</div>
+        <p style="font-size:14px">מחברים בין קבלנים לניקיון מקצועי</p>
+      </div>
+      <div>
+        <div style="color:#fff;font-weight:600;margin-bottom:16px">קישורים</div>
+        <div class="footer-links">
+          <a href="#">אודות</a>
+          <a href="#">צור קשר</a>
+          <a href="#">תנאי שימוש</a>
+          <a href="#">פרטיות</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-weight:600;margin-bottom:16px">יצירת קשר</div>
+        <div style="font-size:14px;line-height:2">
+          <div>info@cleanpost.co.il</div>
+          <div>03-1234567</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">© 2024 CleanPost. כל הזכויות שמורות.</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOnBg(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>הצטרף לCleanPost</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="tabs">
+      <button class="tab active-blue" id="tab-builder" onclick="switchTab('builder')">קבלן</button>
+      <button class="tab" id="tab-cleaner" onclick="switchTab('cleaner')">חברת ניקיון</button>
+    </div>
+    <div id="form-area">
+      <input class="form-field" type="text" placeholder="שם מלא" required />
+      <input class="form-field" type="tel" placeholder="טלפון" required />
+      <input class="form-field" type="email" placeholder="אימייל" required />
+      <input class="form-field" type="text" placeholder="עיר" required />
+      <button class="submit-btn blue" id="submit-btn" onclick="submitForm()">הצטרף עכשיו</button>
+    </div>
+    <div id="success-area" style="display:none" class="success-msg">
+      <div class="big">✅</div>
+      <h4>נרשמת בהצלחה!</h4>
+      <p>ניצור איתך קשר בקרוב.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Header scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+  }
+
+  // Modal
+  let currentTab = 'builder';
+  function openModal(type) {
+    currentTab = type;
+    document.getElementById('modal').classList.add('active');
+    document.getElementById('form-area').style.display = 'block';
+    document.getElementById('success-area').style.display = 'none';
+    switchTab(type);
+  }
+  function closeModal() { document.getElementById('modal').classList.remove('active'); }
+  function closeModalOnBg(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+  function switchTab(type) {
+    currentTab = type;
+    document.getElementById('tab-builder').className = 'tab' + (type === 'builder' ? ' active-blue' : '');
+    document.getElementById('tab-cleaner').className = 'tab' + (type === 'cleaner' ? ' active-green' : '');
+    document.getElementById('submit-btn').className = 'submit-btn ' + (type === 'builder' ? 'blue' : 'green');
+  }
+  function submitForm() {
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('success-area').style.display = 'block';
+  }
+</script>
+</body>
+</html>
