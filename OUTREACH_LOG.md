@@ -5,6 +5,11 @@
 | # | שם | חברה | ערוץ | תבנית | תאריך ניסוח | סטטוס | תגובה | הערות |
 |---|---|---|---|---|---|---|---|---|
 | 1 | Amit Assaraf | Koi (נרכשה ע"י Palo Alto Networks) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת אישית - רקע Landa + סיפור Darcula Official | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | ללא קשר הדדי; יש לשלוח דרך חשבון ה-LinkedIn האישי |
+| 2 | Matan Bar | Melio (נרכשה ע"י Xero) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת - יזם סדרתי, אקזיט קודם ל-eBay ב-2012 | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | linkedin.com/in/matanbar |
+| 3 | Guy Goldstein | Next Insurance (נרכשה ע"י Munich Re/ERGO) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת - יזם סדרתי, אקזיט קודם (Check ל-Intuit, 2014) | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | linkedin.com/in/guygoldstein |
+| 4 | Yevgeny Dibrov | Armis (נרכשה ע"י ServiceNow) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת - יזם סדרתי, אקזיט קודם (Adallom ל-Microsoft, 2015) | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | linkedin.com/in/yevgenydibrov |
+| 5 | Shahar Levi | Locusview (נרכשה ע"י Itron) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת - רקע M&A בהרצוג פוקס נאמן | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | **לאמת פרופיל!** שם נפוץ, 90+ תוצאות ב-LinkedIn |
+| 6 | Idan Dardikman | Koi (נרכשה ע"י Palo Alto Networks) | LinkedIn (בקשת חיבור קרה) | הודעה מותאמת - שותף של אמית אסרף, זווית CTO | 2026-07-08 | טיוטה מוכנה - טרם נשלחה | - | linkedin.com/in/idan-dardikman-🎏-b217151b8 |
 
 ## מקרא סטטוס
 - **טיוטה מוכנה** - הטקסט נכתב, ממתין לשליחה בפועל ע"י המשתמש.
