@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>שטיף — ניקיון ואחזקה | מרכז ושרון</title>
+<meta name="description" content="שטיף — ניקוי בניינים אחרי שיפוץ, ניקוי ספות ומזרנים, ניקוי מזגנים ופוליש רצפות. צוות מאומת, מחיר ברור מראש, שירות במרכז ובשרון." />
+<meta name="keywords" content="ניקיון בניינים אחרי שיפוץ, ניקוי ספות מקצועי, ניקוי מזגנים, פוליש רצפות, חברת ניקיון מרכז ושרון" />
+<link rel="canonical" href="https://{{DOMAIN}}/" />
+<meta property="og:type" content="business.business" />
+<meta property="og:title" content="שטיף — הבית שלך נקי ומטופל תוך 24 שעות" />
+<meta property="og:description" content="ניקוי בניינים אחרי שיפוץ, ספות, מזגנים ורצפות. צוות מאומת, מחיר ברור מראש, שירות במרכז ובשרון." />
+<meta property="og:image" content="{{HERO_IMAGE_URL}}" />
+<meta property="og:locale" content="he_IL" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Epilogue:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "שטיף",
+  "description": "ניקיון ואחזקה — ניקיון בניינים אחרי שיפוץ, ניקוי ספות ומזרנים, ניקוי מזגנים, פוליש והברקת רצפות.",
+  "telephone": "+972543379667",
+  "email": "eyalshwartz1@gmail.com",
+  "url": "https://{{DOMAIN}}",
+  "image": "{{LOGO_URL}}",
+  "priceRange": "₪₪",
+  "areaServed": [
+    { "@type": "Place", "name": "מרכז" },
+    { "@type": "Place", "name": "השרון" }
+  ],
+  "address": { "@type": "PostalAddress", "addressRegion": "מרכז ושרון", "addressCountry": "IL" },
+  "sameAs": []
+}
+</script>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:        #0C4A6E;
+    --navy-deep:   #082F49;
+    --sky:         #0EA5E9;
+    --cyan:        #06B6D4;
+    --frost:       #F0F9FF;
+    --frost-2:     #E0F2FE;
+    --ink:         #0F172A;
+    --ink-muted:   #475569;
+    --white:       #FFFFFF;
+    --whatsapp:    #25D366;
+    --font-head:   'Epilogue', sans-serif;
+    --font-body:   'Urbanist', sans-serif;
+    --radius:      20px;
+    --radius-sm:   12px;
+    --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-soft: 0 20px 60px -20px rgba(12,74,110,0.25);
+    --shadow-glow: 0 0 0 1px rgba(14,165,233,0.15), 0 20px 50px -15px rgba(14,165,233,0.35);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--frost);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+
+  .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* touch targets */
+  .btn, .icon-btn, .quick-reply, summary { min-height: 44px; }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 16px;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--sky), var(--cyan));
+    color: #fff; box-shadow: var(--shadow-glow);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 25px 55px -15px rgba(14,165,233,0.55); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06); color: #fff; border: 1.5px solid rgba(255,255,255,0.35);
+    padding: 12px 24px; font-size: 15px;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.14); }
+  .btn-light {
+    background: #fff; color: var(--navy); border: 1.5px solid #DCEFFB;
+  }
+  .btn-light:hover { border-color: var(--sky); }
+  .btn-whatsapp { background: var(--whatsapp); color: #fff; }
+
+  /* ============ Header ============ */
+  .site-header {
+    position: fixed; top: 0; inset-inline: 0; z-index: 500;
+    padding: 18px 0; transition: background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
+  }
+  .site-header.scrolled { background: rgba(8,47,73,0.92); backdrop-filter: blur(10px); padding: 12px 0; box-shadow: 0 10px 30px -15px rgba(0,0,0,0.4); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-family: var(--font-head); font-weight: 800; font-size: 22px; color: #fff; display:flex; align-items:center; gap:8px; }
+  .logo .drop { color: var(--cyan); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.85); font-weight: 500; font-size: 15px; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .header-cta { display: flex; align-items: center; gap: 12px; }
+  .nav-toggle { display: none; width: 44px; height: 44px; color: #fff; align-items:center; justify-content:center; }
+
+  @media (max-width: 900px) {
+    .nav-links { position: fixed; inset: 72px 16px auto 16px; background: var(--navy-deep); border-radius: var(--radius); padding: 16px; flex-direction: column; align-items: stretch; gap: 4px; box-shadow: var(--shadow-soft); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: all .25s var(--ease); }
+    .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-links a { padding: 12px 14px; border-radius: var(--radius-sm); }
+    .nav-links a:hover { background: rgba(255,255,255,0.06); }
+    .header-cta .btn-secondary { display: none; }
+    .nav-toggle { display: inline-flex; }
+  }
+
+  /* ============ Hero ============ */
+  #hero {
+    position: relative; min-height: 78vh; display: flex; align-items: center;
+    background: radial-gradient(ellipse 120% 80% at 50% -10%, #124e73 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    overflow: hidden; padding: 140px 0 90px;
+  }
+  @media (max-width: 640px) { #hero { min-height: 60vh; padding: 120px 0 70px; } }
+
+  .hero-glow { position: absolute; inset: 0; pointer-events: none; }
+  .ray { position: absolute; top: -20%; width: 2px; height: 140%; background: linear-gradient(to bottom, rgba(6,182,212,0.35), transparent); transform: rotate(12deg); filter: blur(1px); animation: shimmer 6s ease-in-out infinite; }
+  .ray:nth-child(1) { right: 12%; animation-delay: 0s; }
+  .ray:nth-child(2) { right: 28%; animation-delay: 1.4s; height: 120%; }
+  .ray:nth-child(3) { right: 46%; animation-delay: 2.8s; }
+  .ray:nth-child(4) { right: 65%; animation-delay: .8s; height: 110%; }
+  @keyframes shimmer { 0%,100% { opacity: .25; } 50% { opacity: .7; } }
+
+  .bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.55), rgba(14,165,233,0.08) 70%); animation: float-up linear infinite; }
+  @keyframes float-up { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: .8; } 90% { opacity: .5; } 100% { transform: translateY(-620px) translateX(20px); opacity: 0; } }
+
+  .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 780px; margin: 0 auto; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: var(--frost); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 999px; margin-bottom: 22px; }
+  .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+
+  #hero h1 { font-size: clamp(30px, 4.6vw, 52px); font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 18px; }
+  #hero .subtitle { font-size: clamp(16px, 2vw, 19px); color: rgba(240,249,255,0.82); max-width: 600px; margin: 0 auto 34px; }
+
+  .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
+
+  .trust-badges { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; }
+  .trust-badges span { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(240,249,255,0.72); }
+  .trust-badges svg { width: 15px; height: 15px; color: var(--cyan); flex-shrink: 0; }
+
+  /* ============ Sections ============ */
+  .section { padding: 88px 0; }
+  .section-tight { padding: 64px 0; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--sky); background: var(--frost-2); padding: 6px 14px; border-radius: 999px; margin-bottom: 14px; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: clamp(24px, 3.2vw, 36px); color: var(--navy-deep); margin-bottom: 12px; }
+  .section-head p { color: var(--ink-muted); font-size: 16px; }
+
+  /* ============ Bento Services ============ */
+  .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .bento-grid { grid-template-columns: 1fr; } }
+  .bento-card {
+    background: #fff; border: 1px solid #E0F2FE; border-radius: var(--radius); padding: 28px 22px;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .bento-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); border-color: transparent; }
+  .bento-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, var(--sky), var(--cyan)); display: flex; align-items: center; justify-content: center; color: #fff; }
+  .bento-icon svg { width: 26px; height: 26px; }
+  .bento-card h3 { font-size: 18px; color: var(--navy-deep); }
+  .bento-card p { font-size: 14.5px; color: var(--ink-muted); }
+
+  /* ============ Calculator ============ */
+  #calculator { background: linear-gradient(180deg, var(--frost-2) 0%, var(--frost) 100%); }
+  .calc-card { max-width: 640px; margin: 0 auto; background: #fff; border-radius: 24px; box-shadow: var(--shadow-soft); border: 1px solid #E0F2FE; overflow: hidden; }
+  .calc-progress { display: flex; gap: 6px; padding: 20px 26px 0; }
+  .calc-progress span { flex: 1; height: 4px; border-radius: 999px; background: #E0F2FE; }
+  .calc-progress span.done { background: linear-gradient(90deg, var(--sky), var(--cyan)); }
+  .calc-body { padding: 26px; min-height: 300px; }
+  .calc-step-title { font-size: 19px; font-weight: 700; color: var(--navy-deep); margin-bottom: 4px; }
+  .calc-step-sub { font-size: 14px; color: var(--ink-muted); margin-bottom: 20px; }
+
+  .service-pick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .service-pick-grid { grid-template-columns: 1fr; } }
+  .service-pick { border: 1.5px solid #E0F2FE; border-radius: var(--radius-sm); padding: 16px; text-align: right; transition: all .2s; display:flex; flex-direction:column; gap:6px; }
+  .service-pick:hover { border-color: var(--sky); background: var(--frost); }
+  .service-pick.selected { border-color: var(--sky); background: var(--frost-2); box-shadow: 0 0 0 3px rgba(14,165,233,0.12); }
+  .service-pick strong { font-size: 14.5px; color: var(--navy-deep); }
+  .service-pick span { font-size: 12.5px; color: var(--ink-muted); }
+
+  .field-group { margin-bottom: 18px; }
+  .field-group label { display: block; font-size: 14px; font-weight: 600; color: var(--navy-deep); margin-bottom: 8px; }
+  .field-group input[type="range"] { width: 100%; accent-color: var(--sky); }
+  .range-value { font-size: 13px; color: var(--sky); font-weight: 700; }
+  .select-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip-option { border: 1.5px solid #E0F2FE; border-radius: 999px; padding: 9px 16px; font-size: 13.5px; font-weight: 600; color: var(--ink-muted); transition: all .2s; }
+  .chip-option:hover { border-color: var(--sky); }
+  .chip-option.selected { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .price-reveal { text-align: center; padding: 10px 0 6px; }
+  .price-reveal .label { font-size: 13px; color: var(--ink-muted); margin-bottom: 6px; }
+  .price-reveal .amount { font-family: var(--font-head); font-size: 40px; font-weight: 800; background: linear-gradient(135deg, var(--navy), var(--sky)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .price-reveal .note { font-size: 12.5px; color: var(--ink-muted); margin-top: 6px; }
+
+  .calc-input { width: 100%; border: 1.5px solid #E0F2FE; border-radius: var(--radius-sm); padding: 13px 16px; font-size: 15px; font-family: inherit; transition: border-color .2s; }
+  .calc-input:focus { outline: none; border-color: var(--sky); }
+  .hp-field { position: absolute; opacity: 0; height: 0; width: 0; pointer-events: none; }
+
+  .calc-footer { display: flex; align-items: center; justify-content: space-between; padding: 0 26px 26px; gap: 10px; }
+  .calc-back { font-size: 14px; color: var(--ink-muted); font-weight: 600; }
+  .calc-back:hover { color: var(--navy); }
+
+  .success-box { text-align: center; padding: 20px 0; }
+  .success-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--frost-2); color: var(--sky); display:flex; align-items:center; justify-content:center; margin: 0 auto 16px; }
+  .success-icon svg { width: 30px; height: 30px; }
+
+  /* ============ Why ============ */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card { text-align: center; padding: 26px 18px; }
+  .why-num { font-family: var(--font-head); font-size: 34px; font-weight: 800; color: var(--frost-2); -webkit-text-stroke: 1.5px var(--sky); margin-bottom: 10px; }
+  .why-card h3 { font-size: 16.5px; color: var(--navy-deep); margin-bottom: 6px; }
+  .why-card p { font-size: 13.5px; color: var(--ink-muted); }
+
+  /* ============ Testimonials ============ */
+  .rating-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E0F2FE; border-radius: 999px; padding: 8px 18px; font-size: 14px; font-weight: 700; color: var(--navy-deep); margin-bottom: 32px; }
+  .rating-badge svg { width: 16px; height: 16px; color: #F59E0B; }
+  .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 700px) { .testi-grid { grid-template-columns: 1fr; } }
+  .testi-card { background: #fff; border: 1px solid #E0F2FE; border-radius: var(--radius); padding: 24px; }
+  .testi-stars { color: #F59E0B; font-size: 14px; margin-bottom: 10px; letter-spacing: 2px; }
+  .testi-card p { font-size: 15px; color: var(--ink); margin-bottom: 14px; }
+  .testi-name { font-size: 13.5px; font-weight: 700; color: var(--navy-deep); }
+  .testi-role { font-size: 12.5px; color: var(--ink-muted); }
+
+  /* ============ Projects ============ */
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .projects-grid { grid-template-columns: 1fr; } }
+  .project-card { border-radius: var(--radius); overflow: hidden; border: 1px solid #E0F2FE; background: #fff; }
+  .ba-slider { position: relative; height: 170px; overflow: hidden; cursor: ew-resize; user-select: none; }
+  .ba-after, .ba-before { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; font-size: 13px; color: #fff; }
+  .ba-after { background: linear-gradient(135deg, var(--navy), var(--navy-deep)); }
+  .ba-before { background: linear-gradient(135deg, #94a3b8, #64748b); width: 50%; overflow: hidden; border-inline-end: 2px solid #fff; }
+  .ba-before span, .ba-after span { width: 100vw; max-width: 400px; text-align: center; }
+  .ba-handle { position: absolute; top: 0; bottom: 0; inset-inline-start: 50%; width: 3px; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.4); transform: translateX(50%); }
+  .ba-handle::after { content: '↔'; position: absolute; top: 50%; inset-inline-start: 50%; transform: translate(-50%,-50%); width: 30px; height: 30px; background: #fff; border-radius: 50%; display:flex; align-items:center; justify-content:center; color: var(--navy); font-size: 14px; box-shadow: var(--shadow-soft); }
+  .project-info { padding: 16px 18px; }
+  .project-info h3 { font-size: 15px; color: var(--navy-deep); margin-bottom: 4px; }
+  .project-info p { font-size: 13px; color: var(--ink-muted); }
+
+  /* ============ Blog ============ */
+  .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 700px) { .blog-grid { grid-template-columns: 1fr; } }
+  .blog-card { background: #fff; border: 1px solid #E0F2FE; border-radius: var(--radius); overflow: hidden; }
+  .blog-card summary { list-style: none; padding: 22px; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .blog-card summary::-webkit-details-marker { display: none; }
+  .blog-card summary .plus { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--frost-2); color: var(--sky); display:flex; align-items:center; justify-content:center; font-size: 18px; transition: transform .2s; }
+  .blog-card[open] summary .plus { transform: rotate(45deg); }
+  .blog-card summary .blog-tag { font-size: 12px; font-weight: 700; color: var(--sky); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; display:block; }
+  .blog-card summary h3 { font-size: 16.5px; color: var(--navy-deep); }
+  .blog-card .blog-excerpt { font-size: 13.5px; color: var(--ink-muted); margin-top: 4px; }
+  .blog-body { padding: 0 22px 22px; font-size: 14.5px; color: var(--ink); }
+  .blog-body p { margin-bottom: 12px; }
+
+  /* ============ FAQ ============ */
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { background: #fff; border: 1px solid #E0F2FE; border-radius: var(--radius-sm); overflow: hidden; }
+  .faq-item summary { list-style: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 700; color: var(--navy-deep); font-size: 15px; cursor: pointer; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary .plus { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--frost-2); color: var(--sky); display:flex; align-items:center; justify-content:center; font-size: 16px; transition: transform .2s; }
+  .faq-item[open] summary .plus { transform: rotate(45deg); }
+  .faq-item .faq-answer { padding: 0 20px 18px; font-size: 14.5px; color: var(--ink-muted); }
+
+  /* ============ About ============ */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-avatars { display: flex; gap: 16px; }
+  .avatar-card { flex: 1; background: #fff; border: 1px solid #E0F2FE; border-radius: var(--radius); padding: 20px; text-align: center; }
+  .avatar-circle { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 12px; background: linear-gradient(135deg, var(--sky), var(--navy)); display:flex; align-items:center; justify-content:center; color:#fff; font-family: var(--font-head); font-weight: 800; font-size: 22px; }
+  .avatar-card h4 { font-size: 15px; color: var(--navy-deep); }
+  .avatar-card span { font-size: 12.5px; color: var(--ink-muted); }
+  .about-text h2 { font-size: clamp(22px, 3vw, 30px); color: var(--navy-deep); margin-bottom: 16px; }
+  .about-text p { color: var(--ink-muted); font-size: 15px; margin-bottom: 12px; }
+
+  /* ============ Footer ============ */
+  footer { background: var(--navy-deep); color: rgba(240,249,255,0.75); padding: 56px 0 26px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .footer-grid h4 { color: #fff; font-size: 14px; margin-bottom: 14px; }
+  .footer-grid ul li { margin-bottom: 9px; font-size: 13.5px; }
+  .footer-grid ul li a:hover { color: #fff; }
+  .footer-logo { font-family: var(--font-head); font-weight: 800; font-size: 20px; color: #fff; margin-bottom: 10px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size: 12.5px; }
+
+  /* ============ Floating widgets ============ */
+  #whatsapp-float {
+    position: fixed; bottom: 26px; inset-inline-start: 26px; z-index: 400;
+    width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp); color: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px -8px rgba(37,211,102,0.6);
+    transition: bottom .25s var(--ease), transform .2s;
+  }
+  #whatsapp-float:hover { transform: scale(1.06); }
+  #whatsapp-float svg { width: 28px; height: 28px; }
+  #whatsapp-float::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--whatsapp); opacity: .5; animation: pulse-ring 2.4s ease-out infinite; }
+  @keyframes pulse-ring { 0% { transform: scale(0.9); opacity: .6; } 100% { transform: scale(1.35); opacity: 0; } }
+
+  #chatbot-toggle {
+    position: fixed; bottom: 26px; inset-inline-end: 26px; z-index: 400;
+    width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--sky), var(--navy)); color: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-glow);
+    transition: bottom .25s var(--ease), transform .2s;
+  }
+  #chatbot-toggle:hover { transform: scale(1.06); }
+  #chatbot-toggle svg { width: 26px; height: 26px; }
+
+  #chatbot-panel {
+    position: fixed; bottom: 94px; inset-inline-end: 26px; z-index: 410; width: 320px; max-width: calc(100vw - 32px);
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-soft); border: 1px solid #E0F2FE;
+    display: none; flex-direction: column; overflow: hidden; transition: bottom .25s var(--ease);
+  }
+  #chatbot-panel.open { display: flex; }
+  .chat-head { background: var(--navy); color: #fff; padding: 14px 18px; display:flex; align-items:center; justify-content:space-between; }
+  .chat-head strong { font-size: 14.5px; }
+  .chat-head span { font-size: 11.5px; color: rgba(240,249,255,0.7); display:block; }
+  .chat-close { width: 30px; height: 30px; color: #fff; }
+  .chat-body { padding: 14px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--frost); }
+  .chat-msg { max-width: 85%; padding: 10px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: #fff; border: 1px solid #E0F2FE; align-self: flex-start; border-start-start-radius: 4px; }
+  .chat-msg.user { background: var(--sky); color: #fff; align-self: flex-end; border-start-end-radius: 4px; }
+  .chat-quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px; border-top: 1px solid #E0F2FE; }
+  .quick-reply { font-size: 12px; background: var(--frost-2); color: var(--navy); padding: 8px 12px; border-radius: 999px; font-weight: 600; }
+  .quick-reply:hover { background: var(--sky); color: #fff; }
+  .chat-input-row { display: flex; border-top: 1px solid #E0F2FE; }
+  .chat-input-row input { flex: 1; border: none; padding: 12px 14px; font-size: 13.5px; font-family: inherit; }
+  .chat-input-row input:focus { outline: none; }
+  .chat-input-row button { padding: 0 16px; color: var(--sky); font-weight: 700; }
+
+  /* ============ Mobile sticky bar ============ */
+  #mobile-sticky-bar {
+    display: none; position: fixed; bottom: 0; inset-inline: 0; z-index: 390; background: #fff;
+    border-top: 1px solid #E0F2FE; padding: 10px 14px; box-shadow: 0 -10px 30px -20px rgba(0,0,0,0.2);
+    gap: 10px;
+  }
+  @media (max-width: 720px) {
+    #mobile-sticky-bar { display: flex; }
+    #whatsapp-float, #chatbot-toggle { bottom: 82px; }
+    #chatbot-panel { bottom: 150px; }
+  }
+  #mobile-sticky-bar .btn { flex: 1; padding: 12px 10px; font-size: 14px; }
+
+  /* reveal animation */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#hero" class="logo">שטיף <span class="drop">💧</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">שירותים</a>
+      <a href="#calculator">מחשבון מחיר</a>
+      <a href="#projects">עבודות אחרונות</a>
+      <a href="#blog">מאמרים</a>
+      <a href="#faq">שאלות נפוצות</a>
+      <a href="#about">אודות</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#calculator" class="btn btn-primary" style="padding:10px 20px;font-size:14px;">קבל הצעת מחיר</a>
+      <button class="nav-toggle icon-btn" id="navToggle" aria-label="פתח תפריט" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-glow" aria-hidden="true">
+      <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+      <div id="bubbleField"></div>
+    </div>
+    <div class="container hero-inner">
+      <span class="hero-eyebrow"><span class="dot"></span> שטיף · ניקיון ואחזקה במרכז ובשרון</span>
+      <h1>הבית שלך נקי ומטופל תוך 24 שעות — בלי כאב ראש</h1>
+      <p class="subtitle">ניקוי בניינים אחרי שיפוץ, ספות, מזגנים ורצפות. צוות מאומת, מחיר ברור מראש, שירות במרכז ובשרון.</p>
+      <div class="hero-cta-row">
+        <a href="#calculator" class="btn btn-primary">קבל הצעת מחיר תוך דקה</a>
+        <a href="https://wa.me/972543379667" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.02c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.1 8.1 0 0 1-1.24-4.24c0-4.48 3.65-8.13 8.13-8.13 4.48 0 8.13 3.65 8.13 8.13 0 4.48-3.65 8.11-8.13 8.11z"/></svg>
+          וואטסאפ מיידי
+        </a>
+      </div>
+      <div class="trust-badges">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> צוות מאומת ומבוטח</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> מחיר סופי לפני תחילת העבודה</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> מענה מהיר בוואטסאפ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">השירותים שלנו</span>
+        <h2>כל מה שהבית או המשרד שלך צריך</h2>
+        <p>ארבעה שירותי ליבה, ביצוע מקצועי וניקיון יסודי בכל פעם.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card reveal">
+          <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+          <h3>ניקיון בניינים לאחר שיפוץ</h3>
+          <p>הסרת אבק, שאריות צבע ופסולת בנייה — עד לניקיון מלא של הבניין.</p>
+        </div>
+        <div class="bento-card reveal">
+          <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h18v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4zM5 13V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M5 19v2M19 19v2"/></svg></div>
+          <h3>ניקוי ספות ומזרנים</h3>
+          <p>מכונת אקסטרקציה מקצועית, חיטוי וסילוק כתמים וריחות.</p>
+        </div>
+        <div class="bento-card reveal">
+          <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M3 8v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8M7 20h10"/></svg></div>
+          <h3>ניקוי מזגנים</h3>
+          <p>פירוק, שטיפה תעשייתית וחיטוי מסננים לאוויר נקי ובריא.</p>
+        </div>
+        <div class="bento-card reveal">
+          <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg></div>
+          <h3>פוליש והברקת רצפות</h3>
+          <p>טיפול תחזוקתי לרצפות — פוליש, ווקס או קריסטליזציה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALCULATOR ============ -->
+  <section id="calculator" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">מחשבון מחיר</span>
+        <h2>קבלו הערכת מחיר תוך פחות מדקה</h2>
+        <p>שני שלבים קצרים — והמחיר המשוער מוצג לכם מיד, לפני שמסרתם פרט אחד.</p>
+      </div>
+      <div class="calc-card reveal">
+        <div class="calc-progress" id="calcProgress">
+          <span class="done"></span><span></span><span></span><span></span>
+        </div>
+        <div class="calc-body" id="calcBody"><!-- rendered by JS --></div>
+        <div class="calc-footer" id="calcFooter"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY ============ -->
+  <section id="why" class="section section-tight" style="background:#fff;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">למה שטיף</span>
+        <h2>שקיפות ואמינות בכל עבודה</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal"><div class="why-num">01</div><h3>מחיר שקוף מראש</h3><p>אתם רואים הערכת מחיר לפני שאתם משאירים פרט אחד.</p></div>
+        <div class="why-card reveal"><div class="why-num">02</div><h3>זמינות מהירה</h3><p>תיאום מהיר ותגובה זריזה בוואטסאפ ובטלפון.</p></div>
+        <div class="why-card reveal"><div class="why-num">03</div><h3>צוות מאומת</h3><p>אייל ומור, שני שותפים עם ניסיון באחזקה וניקיון.</p></div>
+        <div class="why-card reveal"><div class="why-num">04</div><h3>אחריות על העבודה</h3><p>לא מרוצים? נחזור ונסיים את העבודה כמו שצריך.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section id="testimonials" class="section">
+    <div class="container" style="text-align:center;">
+      <div class="section-head reveal" style="margin-bottom:20px;">
+        <span class="eyebrow">לקוחות ממליצים</span>
+        <h2>מה אומרים עלינו</h2>
+      </div>
+      <span class="rating-badge reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9L5.7 21l1.7-7L2 9.2l7.1-.6z"/></svg>
+        4.8/5 מ-32 ביקורות
+      </span>
+      <div class="testi-grid" style="text-align:right;">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p>"מיכל כ., דיירת בבניין ברחובות — ניקו את כל הבניין אחרי השיפוץ תוך יום אחד, בלי אבק בשום פינה."</p>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p>"אבי ל., מנהל משרד בפתח תקווה — הצוות הגיע בזמן, ניקה 3 ספות ומזגן אחד תוך שעתיים."</p>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p>"דנה מ., בעלת דירה בהוד השרון — ניקוי ספה ומזרון תוך שעה, בלי ריח כלל אחרי הטיפול."</p>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★☆</div>
+          <p>"יוסי ב., קבלן שיפוצים בכפר סבא — מזמין את שטיף אחרי כל פרויקט, תמיד מגיעים בזמן שסוכם."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section" style="background:#fff;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">עבודות אחרונות</span>
+        <h2>לפני ואחרי — גררו לבדוק</h2>
+        <p>גררו את החץ על כל תמונה כדי לראות את ההבדל.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ BLOG ============ -->
+  <section id="blog" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">מהבלוג</span>
+        <h2>טיפים לניקיון ואחזקה</h2>
+      </div>
+      <div class="blog-grid" id="blogGrid"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="section" style="background:#fff;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2>עוד לפני שאתם מתקשרים</h2>
+      </div>
+      <div class="faq-list" id="faqList"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="container about-grid">
+      <div class="about-avatars reveal">
+        <div class="avatar-card">
+          <div class="avatar-circle">א</div>
+          <h4>אייל שוורץ</h4>
+          <span>שותף מייסד</span>
+        </div>
+        <div class="avatar-card">
+          <div class="avatar-circle">מ</div>
+          <h4>מור עטר</h4>
+          <span>שותף מייסד</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">מי אנחנו</span>
+        <h2>שני שותפים, סטנדרט אחד לניקיון</h2>
+        <p>אייל ומור הקימו את שטיף מתוך ניסיון ארוך שנים בתחום האחזקה והניקיון, מתוך רצון להביא סדר, שקיפות ואמינות לתחום שלא תמיד מתנהל כך.</p>
+        <p>היום שטיף מספקת שירותי ניקיון ואחזקה לבניינים, משרדים ובתים פרטיים באזור המרכז והשרון — עם דגש על מחיר ברור מראש וזמינות אמיתית.</p>
+        <a href="https://wa.me/972543379667" target="_blank" rel="noopener" class="btn btn-light">דברו איתנו בוואטסאפ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">שטיף 💧</div>
+        <p style="font-size:13.5px;max-width:280px;">ניקיון ואחזקה במרכז ובשרון — אייל שוורץ ומור עטר.</p>
+      </div>
+      <div>
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="#services">שירותים</a></li>
+          <li><a href="#calculator">מחשבון מחיר</a></li>
+          <li><a href="#projects">עבודות אחרונות</a></li>
+          <li><a href="#blog">מאמרים</a></li>
+          <li><a href="#faq">שאלות נפוצות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>צור קשר</h4>
+        <ul>
+          <li><a href="tel:0543379667">054-3379667</a></li>
+          <li><a href="mailto:eyalshwartz1@gmail.com">eyalshwartz1@gmail.com</a></li>
+          <li>אזור שירות: מרכז ושרון</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> שטיף — כל הזכויות שמורות</span>
+      <span>מרכז ושרון · ניקיון ואחזקה מקצועי</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Floating widgets ============ -->
+<a id="whatsapp-float" href="https://wa.me/972543379667" target="_blank" rel="noopener" aria-label="פתח וואטסאפ">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.02c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.1 8.1 0 0 1-1.24-4.24c0-4.48 3.65-8.13 8.13-8.13 4.48 0 8.13 3.65 8.13 8.13 0 4.48-3.65 8.11-8.13 8.11z"/></svg>
+</a>
+
+<button id="chatbot-toggle" aria-label="פתח צ׳אט עם שטיף">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4-1L3 21l1.2-5A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 20 5"/></svg>
+</button>
+
+<div id="chatbot-panel" role="dialog" aria-label="צ׳אט עם שטיף">
+  <div class="chat-head">
+    <div><strong>עוזר וירטואלי · שטיף</strong><span>שאלו על מחיר, זמינות ואזור שירות</span></div>
+    <button class="chat-close icon-btn" id="chatClose" aria-label="סגור צ׳אט">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-quick" id="chatQuick"></div>
+  <form class="chat-input-row" id="chatForm">
+    <input type="text" id="chatInput" placeholder="הקלידו שאלה..." autocomplete="off" />
+    <button type="submit">שלח</button>
+  </form>
+</div>
+
+<div id="mobile-sticky-bar">
+  <a href="tel:0543379667" class="btn btn-light">התקשרו</a>
+  <a href="https://wa.me/972543379667" target="_blank" rel="noopener" class="btn btn-whatsapp">וואטסאפ</a>
+  <a href="#calculator" class="btn btn-primary">הצעת מחיר</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- placeholders (fill on connect) ---------- */
+  var N8N_WEBHOOK_URL = "{{N8N_WEBHOOK_URL}}";
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- header scroll state + mobile nav ---------- */
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- hero bubbles ---------- */
+  var bubbleField = document.getElementById('bubbleField');
+  for (var i = 0; i < 14; i++) {
+    var b = document.createElement('div');
+    b.className = 'bubble';
+    var size = 6 + Math.random() * 22;
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.left = (Math.random() * 100) + '%';
+    b.style.bottom = '-40px';
+    b.style.animationDuration = (7 + Math.random() * 8) + 's';
+    b.style.animationDelay = (Math.random() * 8) + 's';
+    bubbleField.appendChild(b);
+  }
+
+  /* ============================================================
+     QUOTE CALCULATOR
+  ============================================================ */
+  var SERVICES = [
+    {
+      id: 'building', title: 'ניקיון בניינים לאחר שיפוץ', hint: 'החל מ-₪900',
+      fields: [
+        { key: 'floors', label: 'מספר קומות בבניין', type: 'range', min: 1, max: 20, step: 1, default: 4 },
+        { key: 'apartments', label: 'מספר דירות בבניין', type: 'range', min: 1, max: 60, step: 1, default: 8 }
+      ],
+      price: function(v){ return 900 + v.floors * 180 + v.apartments * 95; }
+    },
+    {
+      id: 'sofa', title: 'ניקוי ספות ומזרנים', hint: 'החל מ-₪120 לפריט',
+      fields: [
+        { key: 'items', label: 'מספר פריטים (ספות + מזרנים)', type: 'range', min: 1, max: 10, step: 1, default: 3 },
+        { key: 'fabric', label: 'סוג בד', type: 'chip', options: [ {value:'fabric', label:'בד רגיל'}, {value:'leather', label:'עור / בד משולב'} ], default: 'fabric' }
+      ],
+      price: function(v){ return v.items * (v.fabric === 'leather' ? 160 : 120); }
+    },
+    {
+      id: 'ac', title: 'ניקוי מזגנים', hint: 'החל מ-₪180 ליחידה',
+      fields: [
+        { key: 'units', label: 'מספר יחידות מזגן', type: 'range', min: 1, max: 15, step: 1, default: 2 },
+        { key: 'type', label: 'סוג מזגן', type: 'chip', options: [ {value:'split', label:'עילי / מיני-מרכזי'}, {value:'central', label:'מרכזי תעשייתי'} ], default: 'split' }
+      ],
+      price: function(v){ return v.units * (v.type === 'central' ? 320 : 180); }
+    },
+    {
+      id: 'floor', title: 'פוליש והברקת רצפות', hint: 'החל מ-₪450',
+      fields: [
+        { key: 'sqm', label: 'שטח הרצפה במ״ר', type: 'range', min: 20, max: 400, step: 10, default: 80 },
+        { key: 'treatment', label: 'סוג טיפול', type: 'chip', options: [ {value:'polish', label:'פוליש'}, {value:'wax', label:'ווקס'}, {value:'crystal', label:'קריסטליזציה'} ], default: 'polish' }
+      ],
+      price: function(v){
+        var rate = v.treatment === 'crystal' ? 35 : (v.treatment === 'wax' ? 22 : 18);
+        return Math.max(450, v.sqm * rate);
+      }
+    }
+  ];
+
+  var calcState = {
+    step: 0,
+    serviceId: null,
+    values: {},
+    estimate: 0,
+    startTime: Date.now()
+  };
+
+  var calcBody = document.getElementById('calcBody');
+  var calcFooter = document.getElementById('calcFooter');
+  var calcProgress = document.getElementById('calcProgress');
+
+  function currentService(){
+    return SERVICES.find(function(s){ return s.id === calcState.serviceId; });
+  }
+
+  function updateProgress(){
+    var spans = calcProgress.querySelectorAll('span');
+    spans.forEach(function(s, i){ s.classList.toggle('done', i <= calcState.step); });
+  }
+
+  function renderStep(){
+    updateProgress();
+    calcFooter.innerHTML = '';
+    if (calcState.step === 0) renderServicePick();
+    else if (calcState.step === 1) renderParams();
+    else if (calcState.step === 2) renderPriceReveal();
+    else if (calcState.step === 3) renderContactForm();
+    else if (calcState.step === 4) renderSuccess();
+  }
+
+  function renderServicePick(){
+    var html = '<div class="calc-step-title">איזה שירות מעניין אתכם?</div>' +
+      '<div class="calc-step-sub">בחרו שירות כדי לקבל הערכת מחיר מיידית</div>' +
+      '<div class="service-pick-grid">';
+    SERVICES.forEach(function(s){
+      html += '<button type="button" class="service-pick" data-id="' + s.id + '"><strong>' + s.title + '</strong><span>' + s.hint + '</span></button>';
+    });
+    html += '</div>';
+    calcBody.innerHTML = html;
+    calcBody.querySelectorAll('.service-pick').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        calcState.serviceId = btn.dataset.id;
+        var svc = currentService();
+        calcState.values = {};
+        svc.fields.forEach(function(f){ calcState.values[f.key] = f.default; });
+        calcState.step = 1;
+        renderStep();
+      });
+    });
+  }
+
+  function renderParams(){
+    var svc = currentService();
+    var html = '<div class="calc-step-title">' + svc.title + '</div>' +
+      '<div class="calc-step-sub">כמה פרטים קטנים כדי לחשב הערכת מחיר מדויקת</div>';
+    svc.fields.forEach(function(f){
+      html += '<div class="field-group">';
+      if (f.type === 'range') {
+        html += '<label>' + f.label + ' — <span class="range-value" id="val-' + f.key + '">' + calcState.values[f.key] + '</span></label>' +
+          '<input type="range" min="' + f.min + '" max="' + f.max + '" step="' + f.step + '" value="' + calcState.values[f.key] + '" data-key="' + f.key + '" />';
+      } else if (f.type === 'chip') {
+        html += '<label>' + f.label + '</label><div class="select-row">';
+        f.options.forEach(function(o){
+          var sel = calcState.values[f.key] === o.value ? ' selected' : '';
+          html += '<button type="button" class="chip-option' + sel + '" data-key="' + f.key + '" data-value="' + o.value + '">' + o.label + '</button>';
+        });
+        html += '</div>';
+      }
+      html += '</div>';
+    });
+    calcBody.innerHTML = html;
+
+    calcBody.querySelectorAll('input[type="range"]').forEach(function(inp){
+      inp.addEventListener('input', function(){
+        calcState.values[inp.dataset.key] = Number(inp.value);
+        document.getElementById('val-' + inp.dataset.key).textContent = inp.value;
+      });
+    });
+    calcBody.querySelectorAll('.chip-option').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var key = chip.dataset.key;
+        calcState.values[key] = chip.dataset.value;
+        calcBody.querySelectorAll('.chip-option[data-key="' + key + '"]').forEach(function(c){ c.classList.remove('selected'); });
+        chip.classList.add('selected');
+      });
+    });
+
+    calcFooter.innerHTML = '<button type="button" class="calc-back" id="calcBackBtn">חזרה</button><button type="button" class="btn btn-primary" id="calcNextBtn">הצג מחיר משוער</button>';
+    document.getElementById('calcBackBtn').addEventListener('click', function(){ calcState.step = 0; renderStep(); });
+    document.getElementById('calcNextBtn').addEventListener('click', function(){
+      var svc = currentService();
+      calcState.estimate = Math.round(svc.price(calcState.values) / 10) * 10;
+      calcState.step = 2;
+      renderStep();
+    });
+  }
+
+  function renderPriceReveal(){
+    var low = Math.round(calcState.estimate * 0.9 / 10) * 10;
+    var high = Math.round(calcState.estimate * 1.15 / 10) * 10;
+    calcBody.innerHTML =
+      '<div class="calc-step-title">המחיר המשוער שלכם</div>' +
+      '<div class="calc-step-sub">מחיר סופי ומדויק ייקבע בתיאום מול הצוות, ללא התחייבות</div>' +
+      '<div class="price-reveal"><div class="label">הערכת מחיר</div>' +
+      '<div class="amount">₪' + low + '–' + high + '</div>' +
+      '<div class="note">' + currentService().title + '</div></div>';
+    calcFooter.innerHTML = '<button type="button" class="calc-back" id="calcBackBtn">חזרה</button><button type="button" class="btn btn-primary" id="calcNextBtn">קבע לי שיחה חוזרת</button>';
+    document.getElementById('calcBackBtn').addEventListener('click', function(){ calcState.step = 1; renderStep(); });
+    document.getElementById('calcNextBtn').addEventListener('click', function(){ calcState.step = 3; renderStep(); });
+  }
+
+  function renderContactForm(){
+    calcBody.innerHTML =
+      '<div class="calc-step-title">רק שם וטלפון</div>' +
+      '<div class="calc-step-sub">נחזור אליכם בהקדם לתיאום מדויק</div>' +
+      '<div class="field-group"><label>שם מלא *</label><input class="calc-input" type="text" id="leadName" required /></div>' +
+      '<div class="field-group"><label>טלפון *</label><input class="calc-input" type="tel" id="leadPhone" required /></div>' +
+      '<div class="field-group"><label>עיר (אופציונלי)</label><input class="calc-input" type="text" id="leadCity" /></div>' +
+      '<div class="field-group"><label>אימייל (אופציונלי)</label><input class="calc-input" type="email" id="leadEmail" /></div>' +
+      '<input class="hp-field" type="text" id="leadWebsite" name="website" tabindex="-1" autocomplete="off" />';
+    calcFooter.innerHTML = '<button type="button" class="calc-back" id="calcBackBtn">חזרה</button><button type="button" class="btn btn-primary" id="calcSubmitBtn">שליחה</button>';
+    document.getElementById('calcBackBtn').addEventListener('click', function(){ calcState.step = 2; renderStep(); });
+    document.getElementById('calcSubmitBtn').addEventListener('click', submitLead);
+  }
+
+  function submitLead(){
+    var name = document.getElementById('leadName').value.trim();
+    var phone = document.getElementById('leadPhone').value.trim();
+    var city = document.getElementById('leadCity').value.trim();
+    var email = document.getElementById('leadEmail').value.trim();
+    var honeypot = document.getElementById('leadWebsite').value;
+
+    if (!name || !phone) {
+      alert('נא למלא שם וטלפון');
+      return;
+    }
+
+    var isBot = !!honeypot || (Date.now() - calcState.startTime) < 2500;
+
+    var lastSubmit = Number(localStorage.getItem('shteef_last_submit') || 0);
+    var rateLimited = (Date.now() - lastSubmit) < 60000;
+
+    if (!isBot && !rateLimited) {
+      localStorage.setItem('shteef_last_submit', String(Date.now()));
+      var payload = {
+        service: currentService().id,
+        params: calcState.values,
+        estimate: calcState.estimate,
+        name: name, phone: phone, city: city, email: email,
+        source: 'quote-calculator'
+      };
+      // Wire to n8n once N8N_WEBHOOK_URL is a real endpoint.
+      if (N8N_WEBHOOK_URL && N8N_WEBHOOK_URL.indexOf('{{') === -1) {
+        fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function(){});
+      } else {
+        console.log('[shteef lead - webhook not configured]', payload);
+      }
+    }
+
+    calcState.step = 4;
+    renderStep();
+  }
+
+  function renderSuccess(){
+    calcBody.innerHTML =
+      '<div class="success-box"><div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>' +
+      '<div class="calc-step-title">הפנייה התקבלה!</div>' +
+      '<p style="color:var(--ink-muted);font-size:14.5px;">ניצור איתכם קשר בהקדם לתיאום ולמחיר סופי. אפשר גם לפנות ישירות בוואטסאפ.</p></div>';
+    calcFooter.innerHTML = '<a href="https://wa.me/972543379667" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;justify-content:center;">המשך בוואטסאפ</a>';
+  }
+
+  renderStep();
+
+  /* ============================================================
+     PROJECTS (before/after slider)
+  ============================================================ */
+  var PROJECTS = [
+    { title: 'בניין מגורים ברחובות', desc: 'ניקיון מלא אחרי שיפוץ כללי בבניין' },
+    { title: 'משרד בפתח תקווה', desc: 'ניקוי 3 ספות ומזגן אחד' },
+    { title: 'פנטהאוז בהרצליה', desc: 'הברקת פרקט בשיטת קריסטליזציה' },
+    { title: 'בניין מסחרי בכפר סבא', desc: 'ניקיון קומות מסחר אחרי שיפוץ' },
+    { title: 'וילה בהוד השרון', desc: 'ניקוי מזגנים מרכזיים תעשייתיים' },
+    { title: 'דירת 5 חדרים ברעננה', desc: 'ניקוי ספות ושטיחים לעומק' }
+  ];
+
+  var projectsGrid = document.getElementById('projectsGrid');
+  PROJECTS.forEach(function(p, idx){
+    var card = document.createElement('div');
+    card.className = 'project-card reveal';
+    card.innerHTML =
+      '<div class="ba-slider" data-idx="' + idx + '">' +
+        '<div class="ba-after"><span>אחרי</span></div>' +
+        '<div class="ba-before"><span>לפני</span></div>' +
+        '<div class="ba-handle"></div>' +
+      '</div>' +
+      '<div class="project-info"><h3>' + p.title + '</h3><p>' + p.desc + '</p></div>';
+    projectsGrid.appendChild(card);
+    io.observe(card);
+  });
+
+  document.querySelectorAll('.ba-slider').forEach(function(slider){
+    var before = slider.querySelector('.ba-before');
+    var handle = slider.querySelector('.ba-handle');
+    var dragging = false;
+
+    function setPct(pct){
+      pct = Math.max(6, Math.min(94, pct));
+      before.style.width = pct + '%';
+      handle.style.insetInlineStart = pct + '%';
+    }
+    function pctFromEvent(clientX){
+      var rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+    slider.addEventListener('pointerdown', function(e){ dragging = true; setPct(pctFromEvent(e.clientX)); });
+    window.addEventListener('pointermove', function(e){ if (dragging) setPct(pctFromEvent(e.clientX)); });
+    window.addEventListener('pointerup', function(){ dragging = false; });
+    slider.addEventListener('touchmove', function(e){ setPct(pctFromEvent(e.touches[0].clientX)); }, { passive: true });
+  });
+
+  /* ============================================================
+     BLOG
+  ============================================================ */
+  var BLOG_POSTS = [
+    {
+      tag: 'שיפוצים', title: 'איך להתכונן לניקיון אחרי שיפוץ — צ׳ק-ליסט מלא',
+      excerpt: 'שיפוץ משאיר אבק בכל פינה. הנה איך לוודא שהניקיון בסוף יעשה עבודה שלמה.',
+      body: '<p>שיפוץ נגמר, אבל האבק לא. הנה צ׳ק-ליסט קצר שיעזור לכם להגיע לניקיון הסופי מוכנים, ולוודא שהצוות שמגיע יכול לעבוד ביעילות.</p>' +
+        '<p>לפני שהצוות מגיע: פנו את הריהוט הזז, כסו רהיטים שלא הוזזו, סגרו ברזים ותריסים, וודאו גישה לחשמל ומים.</p>' +
+        '<p>בזמן העבודה: ניקוי אחרי שיפוץ כולל הסרת אבק מתקרות ומזגנים, ניקוי שאריות צבע מרצפות וחלונות, ופינוי פסולת בנייה קלה.</p>' +
+        '<p>אחרי הניקיון: בדקו פינות, מרזבים וארונות עליונים — שם האבק אוהב להסתתר.</p>'
+    },
+    {
+      tag: 'ריהוט', title: 'כל מה שצריך לדעת על ניקוי ספות מקצועי',
+      excerpt: 'כתמים, ריחות ואבק בית — למה ניקוי אקסטרקציה עושה את ההבדל.',
+      body: '<p>ספה מלוכלכת היא לא רק עניין אסתטי — היא גם אבק בית וחיידקים שנספגים עמוק בבד. הנה למה שווה טיפול מקצועי.</p>' +
+        '<p>ניקוי אקסטרקציה שואב את הלכלוך מעומק הבד, ולא רק מהשטח כמו שאיבת אבק רגילה. זה מסלק כתמים ישנים וריחות שנספגו לאורך זמן.</p>' +
+        '<p>סוג הבד קובע את הטיפול: בד רגיל מתנקה במים וחומרי חיטוי, בעוד עור דורש מוצרים ייעודיים שלא יפגעו במרקם.</p>' +
+        '<p>מומלץ לנקות ספות ומזרנים אחת לחצי שנה, ובמיוחד לפני ואחרי אירוח מרובה או שיפוץ בבית.</p>'
+    },
+    {
+      tag: 'בריאות', title: 'למה חשוב לנקות מזגן פעם בשנה — בריאות וחיסכון בחשמל',
+      excerpt: 'מזגן מלוכלך פוגע באוויר שאתם נושמים ומייקר את חשבון החשמל.',
+      body: '<p>מזגן שלא עבר ניקוי צובר אבק, עובש וחיידקים במסננים — וכל אלה חוזרים אליכם עם כל נשימה בחדר.</p>' +
+        '<p>מעבר לבריאות, מסננים סתומים מכריחים את המזגן לעבוד קשה יותר כדי לקרר את אותו החדר, מה שמעלה את צריכת החשמל.</p>' +
+        '<p>ניקוי מקצועי כולל פירוק המכסה, שטיפה תעשייתית של הסליל והמאווררים, וחיטוי המסננים — לא רק ניגוב חיצוני.</p>' +
+        '<p>ההמלצה: ניקוי יסודי פעם בשנה, לפני עונת הקיץ, ובבתים עם ילדים או אלרגיות — פעמיים בשנה.</p>'
+    },
+    {
+      tag: 'רצפות', title: 'הברקת רצפות — פוליש, ווקס וקריסטליזציה — מה מתאים לרצפה שלכם',
+      excerpt: 'שלוש שיטות שונות לרצפה מבריקה. הנה איך לבחור נכון לפי סוג הרצפה.',
+      body: '<p>לא כל רצפה מתאימה לאותו טיפול. הבחירה הנכונה תלויה בחומר הרצפה ובשחיקה שלה.</p>' +
+        '<p>פוליש מתאים לתחזוקה שוטפת של רצפות אבן וטראצו — מבריק את השטח העליון בלי לשנות אותו מהותית.</p>' +
+        '<p>ווקס יוצר שכבת הגנה נוספת על הרצפה, מתאים לרצפות עם שחיקה קלה שרוצים להאריך את חייהן.</p>' +
+        '<p>קריסטליזציה היא טיפול עמוק יותר לשיש ואבן טבעית — יוצרת שכבה קשה ומבריקה שעמידה יותר לאורך זמן.</p>' +
+        '<p>לא בטוחים מה מתאים לכם? זו בדיוק השאלה שאנחנו עונים עליה בביקור הראשוני, בלי עלות.</p>'
+    }
+  ];
+
+  var blogGrid = document.getElementById('blogGrid');
+  BLOG_POSTS.forEach(function(p){
+    var el = document.createElement('details');
+    el.className = 'blog-card reveal';
+    el.innerHTML =
+      '<summary><div><span class="blog-tag">' + p.tag + '</span><h3>' + p.title + '</h3><p class="blog-excerpt">' + p.excerpt + '</p></div><span class="plus">+</span></summary>' +
+      '<div class="blog-body">' + p.body + '</div>';
+    blogGrid.appendChild(el);
+    io.observe(el);
+  });
+
+  /* ============================================================
+     FAQ
+  ============================================================ */
+  var FAQS = [
+    { q: 'איך נקבע המחיר הסופי?', a: 'המחשבון נותן הערכה מיידית. המחיר הסופי נקבע לאחר תיאום קצר ותמיד לפני תחילת העבודה — בלי הפתעות.' },
+    { q: 'באיזה אזור אתם פועלים?', a: 'אנחנו נותנים שירות באזור המרכז והשרון. אם אתם לא בטוחים אם אנחנו מגיעים אליכם — כתבו לנו בוואטסאפ.' },
+    { q: 'תוך כמה זמן אתם מגיעים?', a: 'ברוב המקרים ניתן לתאם הגעה תוך 24 שעות מרגע הפנייה, בכפוף לזמינות בלוח הזמנים.' },
+    { q: 'אילו חומרי ניקוי אתם משתמשים?', a: 'אנחנו עובדים עם חומרי ניקוי וחיטוי מקצועיים המתאימים לכל סוג משטח, תוך הקפדה על בטיחות הבית והדיירים.' },
+    { q: 'האם הצוות מבוטח ומאומת?', a: 'כן, הצוות שלנו מאומת ומבוטח לעבודה בבתים פרטיים, משרדים ובניינים משותפים.' },
+    { q: 'איך קובעים תור?', a: 'הכי מהיר — דרך מחשבון המחיר באתר או הודעת וואטסאפ ישירה. נחזור אליכם לתיאום מועד מדויק.' }
+  ];
+
+  var faqList = document.getElementById('faqList');
+  FAQS.forEach(function(f){
+    var el = document.createElement('details');
+    el.className = 'faq-item';
+    el.innerHTML = '<summary>' + f.q + '<span class="plus">+</span></summary><div class="faq-answer">' + f.a + '</div>';
+    faqList.appendChild(el);
+  });
+
+  /* ============================================================
+     CHATBOT (rule-based demo widget)
+     Real system prompt: "עוזר וירטואלי של שטיף שעונה על שאלות
+     ניקיון, מחירים משוערים, וזמינות." Swap this rule-based logic
+     for a live LLM call once a backend endpoint exists.
+  ============================================================ */
+  var chatToggle = document.getElementById('chatbot-toggle');
+  var chatPanel = document.getElementById('chatbot-panel');
+  var chatClose = document.getElementById('chatClose');
+  var chatBody = document.getElementById('chatBody');
+  var chatQuick = document.getElementById('chatQuick');
+  var chatForm = document.getElementById('chatForm');
+  var chatInput = document.getElementById('chatInput');
+
+  var CHAT_RESPONSES = [
+    { keys: ['מחיר', 'עולה', 'עלות'], a: 'המחיר תלוי בשירות ובהיקף העבודה. הכי מהיר לקבל הערכה מדויקת דרך מחשבון המחיר למעלה בעמוד — לוקח פחות מדקה.' },
+    { keys: ['זמין', 'מתי', 'מגיעים', 'תוך כמה זמן'], a: 'ברוב המקרים אפשר לתאם הגעה תוך 24 שעות מרגע הפנייה, בכפוף לזמינות.' },
+    { keys: ['אזור', 'איפה', 'עובדים ב'], a: 'אנחנו נותנים שירות באזור המרכז והשרון.' },
+    { keys: ['מזגן'], a: 'ניקוי מזגנים כולל פירוק, שטיפה תעשייתית וחיטוי מסננים. עלות משוערת מתחילה מ-₪180 ליחידה עילית.' },
+    { keys: ['ספה', 'מזרון'], a: 'ניקוי ספות ומזרנים מתבצע במכונת אקסטרקציה עם חיטוי מלא, כולל טיפול בכתמים וריחות.' },
+    { keys: ['שיפוץ', 'בניין'], a: 'ניקיון בניינים אחרי שיפוץ כולל הסרת אבק, שאריות צבע ופסולת בנייה עד לניקיון מלא.' },
+    { keys: ['רצפה', 'פוליש', 'ווקס'], a: 'להברקת רצפות יש לנו שלוש שיטות — פוליש, ווקס וקריסטליזציה — בהתאם לסוג הרצפה שלכם.' }
+  ];
+
+  var quickReplies = [
+    { label: 'מה המחיר?', text: 'מה המחיר של ניקיון?' },
+    { label: 'תוך כמה זמן מגיעים?', text: 'תוך כמה זמן אתם מגיעים?' },
+    { label: 'באיזה אזור פועלים?', text: 'באיזה אזור אתם עובדים?' },
+    { label: 'לדבר עם נציג', wa: true }
+  ];
+
+  function addMsg(text, who){
+    var m = document.createElement('div');
+    m.className = 'chat-msg ' + who;
+    m.textContent = text;
+    chatBody.appendChild(m);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function botReply(userText){
+    var lower = userText.toLowerCase();
+    var found = CHAT_RESPONSES.find(function(r){
+      return r.keys.some(function(k){ return userText.indexOf(k) !== -1 || lower.indexOf(k) !== -1; });
+    });
+    setTimeout(function(){
+      addMsg(found ? found.a : 'אשמח לחבר אתכם לצוות בוואטסאפ לתשובה מדויקת יותר — לחצו על "לדבר עם נציג" למטה.', 'bot');
+    }, 400);
+  }
+
+  function renderQuickReplies(){
+    chatQuick.innerHTML = '';
+    quickReplies.forEach(function(q){
+      var btn = document.createElement('button');
+      btn.className = 'quick-reply';
+      btn.textContent = q.label;
+      btn.addEventListener('click', function(){
+        if (q.wa) { window.open('https://wa.me/972543379667', '_blank'); return; }
+        addMsg(q.label, 'user');
+        botReply(q.text);
+      });
+      chatQuick.appendChild(btn);
+    });
+  }
+
+  var chatInited = false;
+  function openChat(){
+    chatPanel.classList.add('open');
+    if (!chatInited) {
+      addMsg('היי! אני העוזר הווירטואלי של שטיף. אפשר לשאול אותי על מחירים, זמינות ואזור השירות.', 'bot');
+      renderQuickReplies();
+      chatInited = true;
+    }
+  }
+  chatToggle.addEventListener('click', function(){
+    chatPanel.classList.contains('open') ? chatPanel.classList.remove('open') : openChat();
+  });
+  chatClose.addEventListener('click', function(){ chatPanel.classList.remove('open'); });
+
+  chatForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var val = chatInput.value.trim();
+    if (!val) return;
+    addMsg(val, 'user');
+    botReply(val);
+    chatInput.value = '';
+  });
+})();
+</script>
+</body>
+</html>
